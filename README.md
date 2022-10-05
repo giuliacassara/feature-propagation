@@ -65,6 +65,20 @@ The results on the synthetic data with variying degree of homophily can be run a
 python src/run.py --model sage --dataset_name MixHopSynthetic --missing_rate 0.99 --homophily 0.1
 ```
 where *homophily* can be any one of [0.0, 0.1 ..., 0.9].
+```{bash}
+python src/run.py --model sage --dataset_name MixHopSynthetic --missing_rate 0.99 --homophily 0.1
+```
+
+### Diffusion Experiment
+Feature Propagation with Matrix sparsification can be run with the following command:
+```{bash}
+python src/run.py --dataset_name Cora --missing_rate 0.99 --use-gdc
+```
+
+### Todo 
+* Choose different methods for diffusion
+* Run complete experiments 
+* Introduce DeepSets for aggregating features from neighbors
 
 ### Additional Flags
 
@@ -77,7 +91,7 @@ Main arguments:
   --num_iterations             Number of diffusion iterations for feature reconstruction
 ```
 
-## Cite us
+## Cite the original work
 
 ```bibtex
 @article{rossi2021fp,

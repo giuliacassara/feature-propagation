@@ -81,6 +81,10 @@ parser.add_argument("--gpu_idx", type=int, help="Indexes of gpu to run program o
 parser.add_argument(
     "--log", type=str, help="Log Level", default="INFO", choices=["DEBUG", "INFO", "WARNING"],
 )
+parser.add_argument(
+    "--use-gdc",
+    help="Whether to use sparsification",
+    action="store_true")
 
 
 def run(args):
@@ -96,7 +100,7 @@ def run(args):
         if torch.cuda.is_available() and not (args.dataset_name == "OGBN-Products" and args.model == "lp")
         else "cpu"
     )
-    dataset, evaluator = get_dataset(name=args.dataset_name, homophily=args.homophily)
+    dataset, evaluator = get_dataset(name=args.dataset_name, homophily=args.homophily, use_gdc = args.use_gdc)
     data = dataset.data
 
     split_idx = dataset.get_idx_split() if hasattr(dataset, "get_idx_split") else None
